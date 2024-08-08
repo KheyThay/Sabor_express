@@ -1,7 +1,6 @@
 import os #Importando biblioteca Python
 
-restaurantes = [{"nome":"MCDonalds", "categoria":"Hamburgueria","ativo":False}, 
-                {"nome":"Starbucks", "categoria":"Café","ativo":True}]
+restaurantes = []
 
 def exibir_nome_programa():
     print("""
@@ -33,9 +32,12 @@ def opcao_invalida():
 def cadastrar_restaurante():
     exibir_subtitulo("CADASTRAR RESTAURANTES")
     nome_restaurante = input("Digite o nome do restaurante que deseja cadastrar: ")
-    restaurantes.append(nome_restaurante)
+    categoria_restaurante = input(f"Digite qual categoria do restaurante {nome_restaurante}: ")
+    dados_restaurantes = {"nome":nome_restaurante, "categoria":categoria_restaurante, "ativo":False}
+    restaurantes.append(dados_restaurantes)
     print(f"O restaurante {nome_restaurante} foi cadastrado com sucesso!")
     voltar_ao_menu()
+
 def listar_restaurantes():
     exibir_subtitulo("LISTAR RESTAURANTES")
     if(not restaurantes):
@@ -46,9 +48,7 @@ def listar_restaurantes():
             categoria_restaurante = restaurante["categoria"]
             ativo_restaurante = restaurante["ativo"]
             print(f" - {nome_restaurante} | {categoria_restaurante} | {ativo_restaurante}")
-
     voltar_ao_menu()
-
 def escolher_opcao():
     try:
         opcao_escolhida = int(input("Escolha uma opção: "))
