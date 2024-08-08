@@ -20,23 +20,32 @@ def finalizar_app():
     os.system("cls") # Limpando o CMD
     print("Finalizando programa...")
 
-def escolher_opcao():
-    opcao_escolhida = int(input("Escolha uma opção: "))
+def opcao_invalida():
+    print("Opção inválida\n")
+    input("Digite qualquer tecla para voltar ao menu principal")
+    main()
 
-    match opcao_escolhida:
-        case 1:
-            print("Cadastrar Restaurante")
-        case 2:
-            print("Listar  Restaurante")
-        case 3:
-            print("Ativar Restaurante")
-        case 4:
-            finalizar_app()
-        case _:
-            print("Opção inválida!")
+def escolher_opcao():
+    try:
+        opcao_escolhida = int(input("Escolha uma opção: "))
+
+        match opcao_escolhida:
+            case 1:
+                print("Cadastrar Restaurante")
+            case 2:
+                print("Listar  Restaurante")
+            case 3:
+                print("Ativar Restaurante")
+            case 4:
+                finalizar_app()
+            case _:
+                opcao_invalida()
+    except:
+        opcao_invalida()
 
 # Definindo este arquivo como o principal do programa
 def main():
+    os.system("cls")
     exibir_nome_programa()
     exibir_opcoes()
     escolher_opcao()
