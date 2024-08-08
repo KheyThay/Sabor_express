@@ -1,5 +1,8 @@
 import os #Importando biblioteca Python
-restaurantes = []
+
+restaurantes = [{"nome":"MCDonalds", "categoria":"Hamburgueria","ativo":False}, 
+                {"nome":"Starbucks", "categoria":"Café","ativo":True}]
+
 def exibir_nome_programa():
     print("""
 ------------------------------------------
@@ -14,7 +17,6 @@ def exibir_opcoes():
 def finalizar_app():
     os.system("cls") # Limpando o CMD
     print("Finalizando programa...")
-
 def exibir_subtitulo(texto):
     os.system("cls")
     print(f"""
@@ -22,29 +24,28 @@ def exibir_subtitulo(texto):
   SABOR EXPRESS - {texto}
 ------------------------------------------ 
     """)
-
 def voltar_ao_menu():
     input("\nDigite qualquer tecla para voltar ao menu principal")
     main()
-
 def opcao_invalida():
     print("Opção inválida")
     voltar_ao_menu()
-
 def cadastrar_restaurante():
     exibir_subtitulo("CADASTRAR RESTAURANTES")
     nome_restaurante = input("Digite o nome do restaurante que deseja cadastrar: ")
     restaurantes.append(nome_restaurante)
     print(f"O restaurante {nome_restaurante} foi cadastrado com sucesso!")
     voltar_ao_menu()
-
 def listar_restaurantes():
     exibir_subtitulo("LISTAR RESTAURANTES")
     if(not restaurantes):
         print("Nenhum restaurante cadastrado no momento.")
     else:
         for restaurante in restaurantes:
-            print(f".{restaurante}")
+            nome_restaurante = restaurante["nome"]
+            categoria_restaurante = restaurante["categoria"]
+            ativo_restaurante = restaurante["ativo"]
+            print(f" - {nome_restaurante} | {categoria_restaurante} | {ativo_restaurante}")
 
     voltar_ao_menu()
 
